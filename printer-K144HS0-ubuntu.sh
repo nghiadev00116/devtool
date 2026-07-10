@@ -1,4 +1,6 @@
 #!/bin/bash
+#chmod +x setup_printer.sh
+#./setup_printer.sh
 
 echo "======================================================="
 echo "   SCRIPT TỰ ĐỘNG CÀI ĐẶT MÁY IN BILL (ZJIANG 80mm)    "

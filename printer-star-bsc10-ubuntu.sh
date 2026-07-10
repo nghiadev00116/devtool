@@ -1,18 +1,14 @@
-# 🖨️ Hướng dẫn cài đặt Driver máy in BSC10 trên Ubuntu
-
-Đoạn script dưới đây giúp bạn cài đặt tự động driver máy in **Star BSC10 (ESC/POS Mode)**. Bạn có thể sao chép toàn bộ nội dung trong khung dưới đây, lưu thành một file `.sh` và chạy trực tiếp trên Terminal.
-
-```bash
 #!/bin/bash
+#chmod +x setup_printer.sh
+#./setup_printer.sh
 
-echo "=== BẮT ĐẦU CÀI ĐẶT DRIVER MÁY IN BSC10 (ESC/POS MODE) ==="
-
-# 1. Cài đặt các thư viện cần thiết để biên dịch
+# 1. Cài đặt môi trường biên dịch (Bắt buộc cho máy mới)
 sudo apt update
 sudo apt install -y git gcc build-essential libcups2-dev libcupsimage2-dev
 
-# 2. Tải source (chỉ chạy 1 lần)
+# 2. Tải source
 cd ~/Downloads
+rm -rf zj-58
 git clone https://github.com/klirichek/zj-58.git
 cd zj-58
 
@@ -35,4 +31,5 @@ sudo lpadmin -p Star_BSC10 -E -v "usb://Star/BSC10%20(ESP-001)" -P /usr/share/cu
 sudo lpoptions -d Star_BSC10
 sudo cupsaccept Star_BSC10
 sudo cupsenable Star_BSC10
-```
+
+echo "Cài đặt máy in thành công!"
