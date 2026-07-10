@@ -1,3 +1,8 @@
+# 🖨️ Hướng dẫn cài đặt Driver máy in BSC10 trên Ubuntu
+
+Đoạn script dưới đây giúp bạn cài đặt tự động driver máy in **Star BSC10 (ESC/POS Mode)**. Bạn có thể sao chép nội dung này vào một file `.sh` và chạy trực tiếp trên Terminal.
+
+```bash
 #!/bin/bash
 
 echo "=== BẮT ĐẦU CÀI ĐẶT DRIVER MÁY IN BSC10 (ESC/POS MODE) ==="
@@ -43,3 +48,4 @@ sudo cupsaccept Star_BSC10
 sudo cupsenable Star_BSC10
 
 echo "=== HOÀN TẤT! MÁY IN ĐÃ SẴN SÀNG ==="
+```
