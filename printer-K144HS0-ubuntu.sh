@@ -37,23 +37,27 @@ if [ -z "$PRINTER_URI" ]; then
     echo "Vui lòng kiểm tra lại cáp kết nối, bật nguồn máy in và chạy lại script."
     exit 1
 fi
-echo "=> Đã tìm thấy máy in tại: $PRINTER_URI"
+echo "=> Đã tìm thấy kết nối máy in tại: $PRINTER_URI"
 
 # 5. Khởi tạo máy in và gắn Driver
 echo "[5/6] Đang khởi tạo cấu hình máy in..."
-PRINTER_NAME="May_In_Bill"
 
-# Xóa máy in cũ nếu trùng tên để tránh lỗi
+# Tự động cắt lấy tên gốc máy in từ URI (bỏ usb://, bỏ ?serial=, đổi %20 và / thành dấu _)
+PRINTER_NAME=$(echo "$PRINTER_URI" | sed -E 's/usb:\/\///; s/\?.*//; s/%20/_/g; s/\//_/g')
+echo "=> Tên máy in tự động nhận diện được: $PRINTER_NAME"
+
+# Xóa máy in cũ nếu trùng tên để dọn dẹp hệ thống trước khi cài
 sudo lpadmin -x $PRINTER_NAME 2>/dev/null
 
-# Ép tạo máy in mới với Driver Zjiang 80mm (Nếu dùng giấy 58mm, thay ZJ-80.ppd thành ZJ-58.ppd)
-sudo lpadmin -p $PRINTER_NAME -v "$PRINTER_URI" -E -m zjiang/ZJ-80.ppd
+# Ép tạo máy in mới với Driver Zjiang 80mm (đã sửa chuẩn tên file zj80.ppd viết thường)
+sudo lpadmin -p $PRINTER_NAME -v "$PRINTER_URI" -E -m zjiang/zj80.ppd
 
-# 6. Đặt máy in mặc định
+# 6. Đặt máy in mặc định TOÀN HỆ THỐNG (System-wide Default)
 echo "[6/6] Đang thiết lập làm máy in mặc định..."
-sudo lpoptions -d $PRINTER_NAME
+# Lệnh lpadmin -d sẽ cấu hình mặc định ở cấp độ root, mọi app đều sẽ nhận diện
+sudo lpadmin -d $PRINTER_NAME
 
 echo "======================================================="
 echo "✅ HOÀN TẤT! HỆ THỐNG ĐÃ SẴN SÀNG ĐỂ IN HÓA ĐƠN."
-echo "Tên máy in của bạn là: $PRINTER_NAME"
+echo "Tên máy in của bạn là: $PRINTER_NAME (Đã set Default System-wide)"
 echo "======================================================="
