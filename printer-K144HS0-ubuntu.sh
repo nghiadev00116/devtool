@@ -61,3 +61,5 @@ echo "======================================================="
 echo "✅ HOÀN TẤT! HỆ THỐNG ĐÃ SẴN SÀNG ĐỂ IN HÓA ĐƠN."
 echo "Tên máy in của bạn là: $PRINTER_NAME (Đã set Default System-wide)"
 echo "======================================================="
+
+#echo -e '--- TEST MAY IN ---\nDong 1: Ket noi USB thanh cong\nDong 2: Driver Zjiang hoat dong tot\nDong 3: San sang in hoa don!\n-------------------' | lp
