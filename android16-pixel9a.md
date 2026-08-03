@@ -13,6 +13,7 @@ Tài liệu này hướng dẫn chi tiết từng bước cách root Google Pixe
 ## 🛠 Chuẩn bị công cụ
 1. Máy tính đã cài đặt [SDK Platform-Tools (ADB & Fastboot)](https://developer.android.com/studio/releases/platform-tools).
 2. Tải bản ROM (Factory Image) chuẩn xác 100% với **Số bản dựng (Build number)** hiện tại của máy từ trang chủ Google.
+   -> Pixel 9a: [Download](https://developer.android.com/about/versions/16/download?hl=vi)
 3. Tải ứng dụng **Magisk APK** mới nhất từ [GitHub của topjohnwu](https://github.com/topjohnwu/Magisk).
 4. Cáp kết nối USB chất lượng tốt.
 
