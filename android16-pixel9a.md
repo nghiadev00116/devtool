@@ -37,8 +37,12 @@ adb reboot bootloader
 ```bash
 fastboot flashing unlock
 ```
-5. Dùng phím Âm lượng trên điện thoại chọn **Unlock the bootloader** và bấm phím Nguồn để xác nhận. Máy sẽ khởi động lại và xóa dữ liệu.
-6. Thiết lập nhanh máy, bật lại **Gỡ lỗi USB**.
+5. Dùng phím Âm lượng trên điện thoại chọn **Unlock the bootloader** và bấm phím Nguồn để xác nhận.
+6. Dùng nút Nguồn xác nhận Start để bắt đầu khởi động lại máy hoặc dùng:
+```bash
+fastboot reboot
+```
+7. Thiết lập nhanh máy, bật lại **Gỡ lỗi USB**.
 
 ### Bước 3: Patch file bằng Magisk
 1. Bỏ file Magisk APK vào điện thoại và cài đặt.
@@ -48,12 +52,16 @@ adb push init_boot.img /sdcard/Download/
 ```
 3. Mở ứng dụng **Magisk**, chọn **Install (Cài đặt)** > **Select and Patch a File**.
 4. Chọn file `init_boot.img` trong thư mục Download và bấm **Let's Go**. 
-5. Magisk sẽ tạo ra một file mới có dạng `magisk_patched-[...].img`.
+5. Sau khi chạy xong có chữ Alll Done. Magisk sẽ tạo ra một file mới có dạng `magisk_patched-[...].img`.
 
 ### Bước 4: Flash file Root
-1. Kéo file đã patch về lại máy tính (nhớ thay đúng tên file thực tế):
+1. Sử dụng lệnh để dò tên file:
 ```bash
-adb pull /sdcard/Download/magisk_patched-[chuỗi_ngẫu_nhiên].img
+adb shell ls /sdcard/Download/
+```
+    Kéo file đã patch về lại máy tính (nhớ thay đúng tên file thực tế):
+```bash
+adb pull /sdcard/Download/tên-file.img
 ```
 2. Đưa máy vào lại Fastboot:
 ```bash
