@@ -59,7 +59,7 @@ adb push init_boot.img /sdcard/Download/
 ```bash
 adb shell ls /sdcard/Download/
 ```
-Kéo file đã patch về lại máy tính (nhớ thay đúng tên file thực tế):
+   Kéo file đã patch về lại máy tính (nhớ thay đúng tên file thực tế):
 
 ```bash
 adb pull /sdcard/Download/tên-file.img
