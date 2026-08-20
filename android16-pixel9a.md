@@ -56,14 +56,14 @@ adb push init_boot.img /sdcard/Download/
 
 ### Bước 4: Flash file Root
 1. Sử dụng lệnh để dò tên file:
-```bash
-adb shell ls /sdcard/Download/
-```
+   ```bash
+   adb shell ls /sdcard/Download/
+   ```
    Kéo file đã patch về lại máy tính (nhớ thay đúng tên file thực tế):
-
-```bash
-adb pull /sdcard/Download/tên-file.img
-```
+   
+   ```bash
+   adb pull /sdcard/Download/tên-file.img
+   ```
 2. Đưa máy vào lại Fastboot:
 ```bash
 adb reboot bootloader
