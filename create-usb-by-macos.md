@@ -33,7 +33,7 @@ hdiutil mount /Users/nghialeegu/Downloads/Win10_22H2_English_x64v1.iso
 **Bước 4: Copy dữ liệu sang USB**
 Sử dụng `rsync` để copy toàn bộ dữ liệu, ngoại trừ file `install.wim` do giới hạn 4GB của định dạng FAT32:
 ```bash
-rsync -vha --exclude=sources/install.wim /Volumes/CCCOMA_X64FRE_EN-US_DV9/ /Volumes/WIN10
+rsync -vha --progress --exclude=sources/install.wim /Volumes/CCCOMA_X64FRE_EN-US_DV9/ /Volumes/WIN10
 ```
 *(Chú ý: Thay `/Volumes/CCCOMA_X64FRE_EN-US_DV9/` bằng tên ổ ảo Windows ISO của bạn hiển thị sau khi thực hiện bước 3)*
 
@@ -48,3 +48,9 @@ Sử dụng `wimlib` để cắt file `install.wim` thành các phần nhỏ (3.
 wimlib-imagex split /Volumes/CCCOMA_X64FRE_EN-US_DV9/sources/install.wim /Volumes/WIN10/sources/install.swm 3800
 ```
 *(Chú ý: Quá trình này sẽ tốn một ít thời gian. Hãy kiên nhẫn chờ đến khi hoàn tất là bạn đã có một chiếc USB cài Windows sẵn sàng sử dụng!)*
+
+**Bước 7: Tháo USB an toàn (Eject)**
+Sau khi hoàn tất, gỡ USB ra khỏi hệ thống một cách an toàn. *Lưu ý: Thay `diskX` bằng đúng ID USB của bạn (ID tìm được ở Bước 1).*
+```bash
+diskutil eject diskX
+```
